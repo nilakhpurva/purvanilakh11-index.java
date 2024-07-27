@@ -16,7 +16,7 @@ while(i<=a){
 }
 console.log(factorial)
 //Q.3 Create a JavaScript function that takes an array of numbers as input and returns the sum of all the numbers using a for loop.
-function calculateSum(numbers) {
+function calculateSum(numbers){
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i];
