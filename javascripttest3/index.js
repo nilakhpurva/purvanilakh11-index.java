@@ -75,4 +75,60 @@
 //console.log(sumByTable(orders));
 
 
+
+
+
+
+//pracs----------
+
+// Question 3: Nested Objects and Property Counting
+// You are given an array of objects representing students. Each object has a name property and a
+// subjects property, which is an array of strings representing the subjects the student is enrolled
+// in. Write a function called countSubjects that returns an object where each key is a subject and
+// the value is the number of students enrolled in that subject.
+
+
+//const students = [
+  //{ name: "Alice", subjects: ["Math", "Science"] },
+  //{ name: "Bob", subjects: ["English", "Math"] },
+  //{ name: "Charlie", subjects: ["Math", "History"] },
+  //{ name: "David", subjects: ["Science", "History"] }
+  //];
+  //function countSubs(students) {
+  //let subCounts = {};
+  
+  //for (let student of students) {
+  //    for (let subject of student.subjects) {
+  //        if (subCounts[eachsubject]) {
+  //            subCounts[eachsubject]++;
+  //        } else {
+  //            subCounts[subs] = 1;
+  //        }
+  //    }
+  //}
+  
+  //return subCounts;
+  //}
+  //console.log(countSubs(students));
+
+function topSpenders(transactions) {
+  const userTotals = transactions.reduce((acc, transaction) => {
+    if (!acc[transaction.userId]) {
+      acc[transaction.userId] = { totalAmount: 0, transactionCount: 0 };
+    }
+    acc[transaction.userId].totalAmount += transaction.amount;
+    acc[transaction.userId].transactionCount += 1;
+    return acc;
+  }, {});
+  const filteredUsers = Object.entries(userTotals)
+    .filter(([userId, data]) => data.transactionCount > 1)
+    .map(([userId, data]) => ({ userId: parseInt(userId), totalAmount: data.totalAmount }));
+  filteredUsers.sort((a, b) => b.totalAmount - a.totalAmount);
+  return filteredUsers.map(user => user.userId);
+}
+console.log(topSpenders(transactions));
+
+
+
+
   
